@@ -1,0 +1,77 @@
+{
+    "name": "codebar-ag/json-body-guard",
+    "description": "Rejects JSON request bodies before your PHP application decodes them, except on allow-listed paths, to stop hash-collision denial of service",
+    "keywords": [
+        "codebar-ag",
+        "php",
+        "laravel",
+        "symfony",
+        "security",
+        "hashdos",
+        "json",
+        "denial-of-service"
+    ],
+    "homepage": "https://github.com/codebar-ag/json-body-guard",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastian Bürgin-Fix",
+            "email": "helpdesk@codebar.ch",
+            "homepage": "https://www.codebar.ch",
+            "role": "Software-Engineer"
+        }
+    ],
+    "require": {
+        "php": "8.3.*|8.4.*|8.5.*"
+    },
+    "require-dev": {
+        "illuminate/http": "^13.0",
+        "illuminate/support": "^13.0",
+        "larastan/larastan": "^3.9",
+        "laravel/pint": "^1.21",
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "phpstan/phpstan": "^2.1"
+    },
+    "suggest": {
+        "illuminate/support": "Registers the config file with Laravel so it can be published and read through config()"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodebarAg\\JsonBodyGuard\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodebarAg\\JsonBodyGuard\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CodebarAg\\JsonBodyGuard\\Laravel\\JsonBodyGuardServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage --min=100",
+        "format": "vendor/bin/pint",
+        "lint": "vendor/bin/pint --test",
+        "analyse": "vendor/bin/phpstan",
+        "quality": [
+            "@lint",
+            "@analyse",
+            "@test"
+        ]
+    }
+}
